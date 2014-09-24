@@ -1,0 +1,6 @@
+22-Sep 20:34 bacula-dir JobId 0: Fatal error: Could not open Catalog "MyCatalog", database "bacula".
+22-Sep 20:34 bacula-dir JobId 0: Fatal error: mysql.c:196 Unable to connect to MySQL server.
+Database=bacula User=bacula
+MySQL connect failed either server not running or your authorization is incorrect.
+22-Sep 20:34 bacula-dir ERROR TERMINATION
+Please correct configuration file: /etc/bacula/bacula-dir.conf

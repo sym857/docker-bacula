@@ -1,0 +1,80 @@
+Sending build context to Docker daemon 544.3 kBSending build context to Docker daemon 1.101 MBSending build context to Docker daemon 1.658 MBSending build context to Docker daemon 2.215 MBSending build context to Docker daemon 2.772 MBSending build context to Docker daemon  3.33 MBSending build context to Docker daemon 3.887 MBSending build context to Docker daemon 4.444 MBSending build context to Docker daemon 5.001 MBSending build context to Docker daemon 5.558 MBSending build context to Docker daemon 6.083 MBSending build context to Docker daemon  6.64 MBSending build context to Docker daemon 7.197 MBSending build context to Docker daemon 7.754 MBSending build context to Docker daemon 8.311 MBSending build context to Docker daemon 8.868 MBSending build context to Docker daemon 9.425 MBSending build context to Docker daemon 9.982 MBSending build context to Docker daemon 10.54 MBSending build context to Docker daemon 11.06 MBSending build context to Docker daemon 11.62 MBSending build context to Docker daemon 12.18 MBSending build context to Docker daemon 12.73 MBSending build context to Docker daemon 13.29 MBSending build context to Docker daemon 13.85 MBSending build context to Docker daemon 14.41 MBSending build context to Docker daemon 14.96 MBSending build context to Docker daemon 15.52 MBSending build context to Docker daemon 16.08 MBSending build context to Docker daemon 16.63 MBSending build context to Docker daemon 17.19 MBSending build context to Docker daemon 17.75 MBSending build context to Docker daemon 18.31 MBSending build context to Docker daemon 18.86 MBSending build context to Docker daemon 19.42 MBSending build context to Docker daemon 19.98 MBSending build context to Docker daemon 20.53 MBSending build context to Docker daemon 21.09 MBSending build context to Docker daemon 21.62 MBSending build context to Docker daemon 22.15 MBSending build context to Docker daemon 22.21 MB
+Sending build context to Docker daemon 
+Step 0 : FROM centos:centos6
+ ---> 68eb857ffb51
+Step 1 : MAINTAINER sym857
+ ---> Using cache
+ ---> 1f650b428bd7
+Step 2 : ENV VERSION_NUMBER   1
+ ---> Using cache
+ ---> 8ca46fc3cd84
+Step 3 : RUN rpm -ivh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+ ---> Using cache
+ ---> 1fc25affe706
+Step 4 : RUN yum update -y
+ ---> Using cache
+ ---> 5fb6a7864491
+Step 5 : RUN yum install -y ssmtp
+ ---> Using cache
+ ---> 5ba2d8b978b2
+Step 6 : RUN yum install -y bacula-director-mysql bacula-console mysql-server mysql-devel
+ ---> Using cache
+ ---> 5da58b53b909
+Step 7 : RUN yum install -y wget
+ ---> Using cache
+ ---> 08cbc43dd7bd
+Step 8 : RUN wget http://sourceforge.net/projects/webadmin/files/webmin/1.660/webmin-1.660-1.noarch.rpm
+ ---> Using cache
+ ---> 0c71dcf86f5b
+Step 9 : RUN rpm -Uvh webmin-1.660-1.noarch.rpm
+ ---> Using cache
+ ---> 9a634f9e546b
+Step 10 : ADD setup-mysql.sh /setup-mysql.sh
+ ---> Using cache
+ ---> 07216e384fe0
+Step 11 : RUN chmod +x /setup-mysql.sh
+ ---> Using cache
+ ---> 5f79a1f02685
+Step 12 : ADD startbacula.sh /startbacula.sh
+ ---> 47d1ea8494b1
+Removing intermediate container c4156484e9b6
+Step 13 : RUN chmod +x /startbacula.sh
+ ---> Running in 5e6734ac58e4
+ ---> eae72fe1281d
+Removing intermediate container 5e6734ac58e4
+Step 14 : ADD wake-server.sh /wake-server.sh
+ ---> 5b926d0f7898
+Removing intermediate container 2c147941156d
+Step 15 : RUN chmod +x wake-server.sh
+ ---> Running in edc554aed140
+ ---> 85fb3fc986f5
+Removing intermediate container edc554aed140
+Step 16 : VOLUME /data
+ ---> Running in 460e7a26ca9a
+ ---> ae60fa1f86bf
+Removing intermediate container 460e7a26ca9a
+Step 17 : VOLUME /etc/bacula
+ ---> Running in 84ce9df729b4
+ ---> 84f5a474667f
+Removing intermediate container 84ce9df729b4
+Step 18 : VOLUME /var/lib/mysql
+ ---> Running in 0c3ef1542edd
+ ---> cfc5c40e47a7
+Removing intermediate container 0c3ef1542edd
+Step 19 : EXPOSE 9101
+ ---> Running in e9cbf049db92
+ ---> b77ed5a26d24
+Removing intermediate container e9cbf049db92
+Step 20 : EXPOSE 10000
+ ---> Running in 3277270e51c1
+ ---> 0349b4d3a0d5
+Removing intermediate container 3277270e51c1
+Step 21 : EXPOSE 3603
+ ---> Running in 014208b310b7
+ ---> 465a9e49016d
+Removing intermediate container 014208b310b7
+Step 22 : CMD ["/bin/bash", "-c",  "/startbacula.sh"]
+ ---> Running in 4a5e3d191c55
+ ---> bffe65375526
+Removing intermediate container 4a5e3d191c55
+Successfully built bffe65375526
