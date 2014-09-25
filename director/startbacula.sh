@@ -27,10 +27,29 @@ else
    service mysqld start
 fi
 
+if test -r /etc/bacula/email.dest
+then
+   mv /etc/aliases /etc/aliases.old
+   grep -v "root:" /etc/aliases.old > /etc/aliases
+   echo "root: $(cat /etc/bacula/email.dest)" >> /etc/aliases
+   newaliases
+
+   echo "Starting email"
+   service postfix start
+fi
+
 echo "-------  PS List ---------"
 ps -ax
 echo "--------------------------"
 
+if test -r /etc/bacula/testemail
+then
+   echo "Sending a test email"
+   echo "test email for bacula director docker" > /email.txt
+   echo "." >> /email.txt
+   mail -s "Test email from bacula-dir docker" root < /email.txt
+   rm /email.txt 
+fi
 
 # Start webmin in backgroud
 /sbin/service webmin start

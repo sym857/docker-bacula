@@ -8,9 +8,12 @@ ENV VERSION_NUMBER   1
 # ENV MYSQL_PASSWORD  S3cr3tSqu1rr3l
 
 # Get ssmtp
-RUN rpm -ivh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-RUN yum update -y
-RUN yum install -y ssmtp
+#RUN rpm -ivh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+#RUN yum update -y
+#RUN yum install -y ssmtp
+
+# get postfix
+RUN yum install -y postfix
 
 # get bacula
 RUN yum install -y bacula-director-mysql bacula-console mysql-server mysql-devel 
@@ -43,5 +46,7 @@ EXPOSE 9101
 #EXPOSE 9103
 EXPOSE 10000
 EXPOSE 3603
+EXPOSE 25
+EXPOSE 465
 
 CMD ["/bin/bash", "-c",  "/startbacula.sh"]
