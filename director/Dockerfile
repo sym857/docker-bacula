@@ -6,6 +6,7 @@ ENV VERSION_NUMBER   1
 # ENV BACULA_USER     nobody
 # ENV BACULA_GRP      nobody
 # ENV MYSQL_PASSWORD  S3cr3tSqu1rr3l
+# ENV WEBMIN_PASSWORD sym857
 
 # Get ssmtp
 #RUN rpm -ivh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
@@ -45,8 +46,8 @@ EXPOSE 9101
 #EXPOSE 9102
 #EXPOSE 9103
 EXPOSE 10000
-EXPOSE 3603
-EXPOSE 25
-EXPOSE 465
+#EXPOSE 3603
+#EXPOSE 25
+#EXPOSE 465
 
 CMD ["/bin/bash", "-c",  "/startbacula.sh"]

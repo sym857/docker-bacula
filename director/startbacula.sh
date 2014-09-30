@@ -27,6 +27,9 @@ else
    service mysqld start
 fi
 
+/usr/libexec/webmin/changepass.pl /etc/webmin root $WEBMIN_PASSWORD
+
+
 if test -r /etc/bacula/email.dest
 then
    mv /etc/aliases /etc/aliases.old
