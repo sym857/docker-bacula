@@ -17,7 +17,7 @@ ENV VERSION_NUMBER   1
 RUN yum install -y postfix
 
 # get bacula
-RUN yum install -y bacula-director-mysql bacula-console mysql-server mysql-devel 
+RUN yum install -y bacula-director-mysql bacula-console mysql 
 
 # Get Webmin
 RUN yum install -y wget
@@ -36,7 +36,6 @@ RUN chmod +x wake-server.sh
 
 VOLUME /data
 VOLUME /etc/bacula
-VOLUME /var/lib/mysql 
 VOLUME /var/spool/bacula
 
 # Setup Mysql Database

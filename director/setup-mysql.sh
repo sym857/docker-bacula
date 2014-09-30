@@ -1,6 +1,4 @@
 #!/bin/bash
-service mysqld start
-mysqladmin -u root password $MYSQL_PASSWORD
 
 /usr/libexec/bacula/grant_mysql_privileges -u root -p$MYSQL_PASSWORD
 /usr/libexec/bacula/create_mysql_database -u root -p$MYSQL_PASSWORD
