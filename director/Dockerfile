@@ -37,7 +37,7 @@ RUN chmod +x wake-server.sh
 VOLUME /data
 VOLUME /etc/bacula
 VOLUME /var/spool/bacula
-VOLUME /var/run/mysqld/mysqld.sock
+VOLUME /var/lib/mysql
 
 # Setup Mysql Database
 #RUN /bin/bash -c /setup-mysql.sh
