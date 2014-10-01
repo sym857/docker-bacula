@@ -7,6 +7,7 @@ ENV VERSION_NUMBER   1
 # ENV BACULA_GRP      nobody
 # ENV MYSQL_PASSWORD  S3cr3tSqu1rr3l
 # ENV WEBMIN_PASSWORD sym857
+# ENV MYSQL_IPADDRESS 192.168.3.160
 
 # Get ssmtp
 #RUN rpm -ivh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
@@ -37,7 +38,6 @@ RUN chmod +x wake-server.sh
 VOLUME /data
 VOLUME /etc/bacula
 VOLUME /var/spool/bacula
-VOLUME /var/lib/mysql
 
 # Setup Mysql Database
 #RUN /bin/bash -c /setup-mysql.sh
