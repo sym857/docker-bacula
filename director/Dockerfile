@@ -47,7 +47,7 @@ EXPOSE 9101
 #EXPOSE 9103
 EXPOSE 10000
 #EXPOSE 3603
-#EXPOSE 25
+EXPOSE 25
 #EXPOSE 465
 
 CMD ["/bin/bash", "-c",  "/startbacula.sh"]

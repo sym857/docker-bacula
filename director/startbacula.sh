@@ -17,6 +17,12 @@ then
    cp /etc/bacula/hostmacs /etc
 fi
 
+if test -r /etc/bacula/mysql.created
+then
+   echo "Marker that Mysql already setup"
+   rm /setup-mysql.sh
+fi
+
 if test -x /setup-mysql.sh
 then
    echo "Setuping up Mysql"

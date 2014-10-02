@@ -10,6 +10,8 @@ echo "UPDATE user SET password=PASSWORD(\"$MYSQL_PASSWORD\") WHERE user='bacula'
 echo "FLUSH PRIVILEGES;" >> /mysql.sql
 echo "exit" >> /mysql.sql
 
+touch /etc/bacula/mysql.created
+
 mysql -h $MYSQL_IPADDRESS -u root -p$MYSQL_PASSWORD < /mysql.sql
 
 
