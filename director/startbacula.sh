@@ -28,24 +28,26 @@ then
    echo "Setuping up Mysql"
    /setup-mysql.sh
    rm /setup-mysql.sh
-else
-   echo "Starting Mysql"
-   service mysqld start
 fi
+
+alternatives --set mta /usr/sbin/sendmail.ssmtp
+
+rm -f /etc/bacula/logs.dir
+ln -s /var/log /etc/bacula/logs.dir
 
 /usr/libexec/webmin/changepass.pl /etc/webmin root $WEBMIN_PASSWORD
 
 
-if test -r /etc/bacula/email.dest
-then
-   mv /etc/aliases /etc/aliases.old
-   grep -v "root:" /etc/aliases.old > /etc/aliases
-   echo "root: $(cat /etc/bacula/email.dest)" >> /etc/aliases
-   newaliases
+#if test -r /etc/bacula/email.dest
+#then
+   #mv /etc/aliases /etc/aliases.old
+   #grep -v "root:" /etc/aliases.old > /etc/aliases
+   #echo "root: $(cat /etc/bacula/email.dest)" >> /etc/aliases
+   #newaliases
 
-   echo "Starting email"
-   service postfix start
-fi
+   #echo "Starting email"
+   #service postfix start
+#fi
 
 echo "-------  PS List ---------"
 ps -ax
@@ -56,7 +58,9 @@ then
    echo "Sending a test email"
    echo "test email for bacula director docker" > /email.txt
    echo "." >> /email.txt
+   echo "*** Issuing the mail ***"
    mail -s "Test email from bacula-dir docker" root < /email.txt
+   echo "************************"
    rm /email.txt 
 fi
 

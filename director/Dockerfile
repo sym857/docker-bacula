@@ -10,12 +10,15 @@ ENV VERSION_NUMBER   1
 # ENV MYSQL_IPADDRESS 192.168.3.160
 
 # Get ssmtp
-#RUN rpm -ivh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-#RUN yum update -y
-#RUN yum install -y ssmtp
+RUN rpm -ivh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+RUN yum update -y
+RUN yum install -y ssmtp
 
 # get postfix
 RUN yum install -y postfix
+RUN chkconfig postfix off
+RUN service postfix stop
+RUN yum install -y mailx 
 
 # get bacula
 RUN yum install -y bacula-director-mysql bacula-console mysql 
