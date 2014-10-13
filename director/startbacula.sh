@@ -35,7 +35,7 @@ alternatives --set mta /usr/sbin/sendmail.ssmtp
 rm -f /etc/bacula/logs.dir
 ln -s /var/log /etc/bacula/logs.dir
 
-/usr/libexec/webmin/changepass.pl /etc/webmin root $WEBMIN_PASSWORD
+#/usr/libexec/webmin/changepass.pl /etc/webmin root $WEBMIN_PASSWORD
 
 
 #if test -r /etc/bacula/email.dest
@@ -49,10 +49,6 @@ ln -s /var/log /etc/bacula/logs.dir
    #service postfix start
 #fi
 
-echo "-------  PS List ---------"
-ps -ax
-echo "--------------------------"
-
 if test -r /etc/bacula/testemail
 then
    echo "Sending a test email"
@@ -65,7 +61,7 @@ then
 fi
 
 # Start webmin in backgroud
-/sbin/service webmin start
+#/sbin/service webmin start
 
 # Start Director in foreground
 bacula-dir -f -u $BACULA_USER -g $BACULA_GRP -c /etc/bacula/bacula-dir.conf

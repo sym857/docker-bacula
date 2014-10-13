@@ -24,9 +24,9 @@ RUN yum install -y mailx
 RUN yum install -y bacula-director-mysql bacula-console mysql 
 
 # Get Webmin
-RUN yum install -y wget
-RUN wget http://sourceforge.net/projects/webadmin/files/webmin/1.660/webmin-1.660-1.noarch.rpm
-RUN rpm -Uvh webmin-1.660-1.noarch.rpm
+#RUN yum install -y wget
+#RUN wget http://sourceforge.net/projects/webadmin/files/webmin/1.660/webmin-1.660-1.noarch.rpm
+#RUN rpm -Uvh webmin-1.660-1.noarch.rpm
 
 # Add Setup Helper scripts 
 ADD setup-mysql.sh /setup-mysql.sh
@@ -48,7 +48,7 @@ VOLUME /var/spool/bacula
 EXPOSE 9101
 #EXPOSE 9102
 #EXPOSE 9103
-EXPOSE 10000
+#EXPOSE 10000
 #EXPOSE 3603
 EXPOSE 25
 #EXPOSE 465
